@@ -1,17 +1,23 @@
-# The Official&trade; MrPickles Dotfiles Repository
+# Simon Jacquet dotfiles, inspired by 'The Official&trade; MrPickles Dotfiles Repository'
 
 These are my personal dotfiles.
-
-```
-curl -L andrew.cloud/dotfiles.sh | sh
-```
-
-![Screenshot of my dotfiles](images/screenshot.png)
 
 These dotfiles are intended for use with zsh, [oh-my-zsh][], and the
 [solarized][] colorscheme.
 The configuration uses powerline-based status bars for vim and tmux and
 [Powerlevel10k][powerlevel10k] as its zsh theme.
+
+## Preset-up instructions
+
+Update apt
+```shell
+sudo apt update
+```
+
+Install neovim, git, delta, ripgrep, fzf, fd, exa, bat
+```shell
+sudo apt install =y neovim git-all delta ripgrep fzf fd-find exa rust-bat
+```
 
 ## Prequisites
 
