@@ -16,7 +16,7 @@ sudo apt update
 
 Install neovim, git, delta, ripgrep, fzf, fd, exa, bat:
 ```shell
-sudo apt install =y neovim git-all delta ripgrep fzf fd-find exa rust-bat
+sudo apt install -y neovim git-all delta ripgrep fzf fd-find exa rust-bat
 ```
 
 Install fonts manually from [source][p10k-fonts]
