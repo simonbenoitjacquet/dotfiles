@@ -9,14 +9,24 @@ The configuration uses powerline-based status bars for vim and tmux and
 
 ## Preset-up instructions
 
-Update apt
+Update apt:
 ```shell
 sudo apt update
 ```
 
-Install neovim, git, delta, ripgrep, fzf, fd, exa, bat
+Install neovim, git, delta, ripgrep, fzf, fd, exa, bat:
 ```shell
 sudo apt install =y neovim git-all delta ripgrep fzf fd-find exa rust-bat
+```
+
+Install fonts manually from [source][p10k-fonts]
+
+Install Solarized on ubuntu (source:https://github.com/aruhier/gnome-terminal-colors-solarized#installation-and-usage):
+```shell
+sudo apt install dconf-cli
+git clone https://github.com/aruhier/gnome-terminal-colors-solarized.git
+cd gnome-terminal-colors-solarized
+./install.sh
 ```
 
 ## Prequisites
