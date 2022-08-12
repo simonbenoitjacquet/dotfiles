@@ -4,6 +4,7 @@ local M = {}
 -- To install others take a look at :LspInstallInfo
 M.servers = {
   'sumneko_lua',
+--  'pyright',
 }
 
 M.settings = {
@@ -11,7 +12,7 @@ M.settings = {
     diagnostics = {
       globals = { 'vim' }
     }
-  }
+  },
 }
 
 return M
