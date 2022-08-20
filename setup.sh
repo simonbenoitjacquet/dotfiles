@@ -26,9 +26,15 @@ while getopts :ht: option; do
       elif [[ "clean" =~ ^${OPTARG} ]]; then
         BUILD=
       elif [[ "shellcheck" =~ ^${OPTARG} ]]; then
+        # shellcheck is not available everywhere from the get go. It should 
+        # probably be installed before.
+        # TODO: read about shellcheck to see whether it is worth installing 
+        # everywhere.
         shellcheck -x -- *.sh
         exit 0
       else
+        # Redirects output from echo "$usage" to standard error (&2)
+        # File descriptor 0 is stdin, 1 is stdout, 2 is stderr
         echo "$usage" >&2
         exit 1
       fi;;
@@ -84,6 +90,7 @@ print_question() {
 }
 
 execute() {
+  # Execute $1 and redirects both stdout and stderr to the file /dev/null
   $1 &> /dev/null
   print_result $? "${2:-$1}"
 }
@@ -172,6 +179,10 @@ install_optional_extras() {
       echo "Unsupported OS. Install extras yourself... ¯\_(ツ)_/¯"
     fi
   fi
+}
+
+install_python_with_conda() {
+  sudo apt install conda
 }
 
 link_file() {

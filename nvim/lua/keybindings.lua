@@ -27,6 +27,10 @@ vim.api.nvim_set_keymap('n', 'S', hop_search_before, { noremap = true })
 vim.api.nvim_set_keymap('v', 's', hop_search_after, { noremap = true })
 vim.api.nvim_set_keymap('v', 'S', hop_search_before, { noremap = true })
 
+-- 
+vim.api.nvim_set_keymap('n', 'go', 'm`o<esc>``', { noremap = true })
+vim.api.nvim_set_keymap('n', 'gO', 'm`O<esc>``', { noremap = true })
+
 -- =============================== Map Leader ===============================
 -- Define mapleader.
 vim.g.mapleader = " "

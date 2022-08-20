@@ -2,35 +2,36 @@
 
 These are my personal dotfiles.
 
-These dotfiles are intended for use with zsh, [oh-my-zsh][], and the
-[solarized][] colorscheme.
+These dotfiles are intended for use with zsh, [oh-my-zsh][].
 The configuration uses powerline-based status bars for vim and tmux and
 [Powerlevel10k][powerlevel10k] as its zsh theme.
 
-## Preset-up instructions
+## Set-up instructions
 
 Update apt:
 ```shell
 sudo apt update
 ```
 
-Install neovim, git, delta, ripgrep, fzf, fd, exa, bat:
+Get and run the installation script:
 ```shell
-sudo apt install -y neovim git-all delta ripgrep fzf fd-find exa rust-bat
+bash <(curl -L https://raw.githubusercontent.com/simonbenoitjacquet/dotfiles/master/dotfiles.sh)
 ```
 
-Install fonts manually from [source][p10k-fonts]
-
-Install Solarized on ubuntu (source:https://github.com/aruhier/gnome-terminal-colors-solarized#installation-and-usage):
-```shell
-sudo apt install dconf-cli
-git clone https://github.com/aruhier/gnome-terminal-colors-solarized.git
-cd gnome-terminal-colors-solarized
-./install.sh
-```
+<!-- Install neovim, git, delta, ripgrep, fzf, fd, exa, bat: -->
+<!-- ```shell -->
+<!-- sudo apt install -y neovim git-all delta ripgrep fzf fd-find exa rust-bat -->
+<!-- ``` -->
 
 ## Prequisites
 
+These dotfiles have been conceived to work with Linux and installs packages
+with apt.
+
+Otherwise, all needed packages are automatically installed if needed
+(such as git, neovim, tmux, zsh and others).
+
+## Old README
 These dotfiles contain the following software dependencies:
 
 * Linux or MacOS

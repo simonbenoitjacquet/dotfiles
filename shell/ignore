@@ -9,3 +9,6 @@ Library/
 
 # Vim swapfiles
 *.swp
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
