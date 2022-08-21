@@ -7,30 +7,27 @@
 
 { # This ensures the entire script is downloaded.
 
-  basedir=$HOME/.dotfiles
-  repourl=https://github.com/simonbenoitjacquet/dotfiles.git
+  BASEDIR=$HOME/.dotfiles
+  REPOURL=https://github.com/simonbenoitjacquet/dotfiles.git
 
   # Install git
   if ! command -v git >/dev/null ; then
-    # TODO: Test this implementation
-    echo "Git is not installed!"
-    echo "Installing git"
-    sudo apt install git-all
+    sudo apt install git
   fi
 
   # Download dotfiles
-  if [ -d "$basedir/.git" ]; then
-    cd "$basedir" || exit
+  if [ -d "$BASEDIR/.git" ]; then
+    cd "$BASEDIR" || exit
     git pull --quiet --rebase origin master
   else
-    rm -rf "$basedir"
-    git clone --quiet --filter=blob:none "$repourl" "$basedir"
+    rm -rf "$BASEDIR"
+    git clone --quiet --filter=blob:none "$REPOURL" "$BASEDIR"
   fi
 
   # Launch setupscript
-  cd "$basedir" || exit
+  cd "$BASEDIR" || exit
   # shellcheck source=setup.sh
   # . setup.sh -t build
-  . setup/build.sh
+  . "${BASEDIR}/setup/build.sh"
 
 } # This ensures the entire script is downloaded.

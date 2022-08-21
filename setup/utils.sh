@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+BASEDIR=$HOME/.dotfiles
+
 print_success() {
   # Print output in green
   printf "\e[0;32m  [✔] $1 %s\e[0m\n"
