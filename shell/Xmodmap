@@ -1,0 +1,3 @@
+!Remap Caps Lock to Esc
+clear lock
+keycode 66 = Escape

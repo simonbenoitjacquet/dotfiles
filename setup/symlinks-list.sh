@@ -11,6 +11,8 @@ FILES_TO_SYMLINK=(
   'shell/vimrc'
   'shell/zshrc'
   'shell/p10k.zsh'
+  'shell/xinitrc'
+  'shell/Xmodmap'
 )
 
 FOLDERS_TO_SYMLINK=(
