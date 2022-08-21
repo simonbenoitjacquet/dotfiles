@@ -182,20 +182,6 @@ Custom git configurations can be placed in `~/.gitconfig`.
 The normal git config file is not put under version control, so it's safe to put
 machine-specific tokens in it.
 
-## Teardown
-
-To clean up the dotfiles, run the configuration script with the `clean`
-argument.
-It will remove all symlinks, but zsh and oh-my-zsh will be untouched.
-If you wish to remove those, you will have to manually delete them.
-
-```shell
-cd ~/.dotfiles
-./setup.sh -t clean
-rm -rf ~/.oh-my-zsh # optionally remove oh-my-zsh
-chsh -s $(which bash) # optionally change shell back to bash
-```
-
 [solarized]: http://ethanschoonover.com/solarized
 [homebrew]: http://brew.sh/
 [oh-my-zsh]: https://github.com/robbyrussell/oh-my-zsh
