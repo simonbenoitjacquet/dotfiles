@@ -78,6 +78,10 @@ KEYTIMEOUT=1
 setopt correct
 setopt rmstarsilent # silence rm * confirmation
 
+# Add path shortcuts
+alias cdoc="/mnt/c/Users/simon/Documents"
+alias cunam="/mnt/c/Users/simon/Documents/unamur"
+
 # Set Vim as the default editor.
 export EDITOR="vim"
 # Use Neovim instead of classic Vim (if available)
@@ -85,6 +89,12 @@ if _has nvim; then
   alias vim="nvim"
   alias vi="nvim"
   export EDITOR="nvim"
+fi
+
+# Alias for python 
+if _has python3; then
+    alias python="python3"
+    alias pip="pip3"
 fi
 
 # Use 256 color for tmux.

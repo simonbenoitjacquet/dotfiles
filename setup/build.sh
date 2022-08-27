@@ -14,6 +14,7 @@ sudo apt install -y tmux
 
 # Install extras
 sudo apt install -y delta ripgrep fd-find fzf exa rust-bat
+sudo apt install -y unzip
 
 # Install languages
 . "${SCRIPT_DIR}/python.sh"
