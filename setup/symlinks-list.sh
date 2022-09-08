@@ -5,19 +5,19 @@ FILES_TO_SYMLINK=(
   'git/main.gitconfig'
   'git/gitignore'
 
-  'HOME_config/ignore'
-  'HOME_config/ripgreprc'
-  'HOME_config/tmux.conf'
-  'HOME_config/vimrc'
-  'HOME_config/zshrc'
-  'HOME_config/p10k.zsh'
-  'HOME_config/xinitrc'
-  'HOME_config/Xmodmap'
+  'home_config/ignore'
+  'home_config/ripgreprc'
+  'home_config/tmux.conf'
+  'home_config/vimrc'
+  'home_config/zshrc'
+  'home_config/p10k.zsh'
+  'home_config/xinitrc'
+  'home_config/Xmodmap'
 )
 
 FOLDERS_TO_SYMLINK=(
-  'XDG_config/nvim'
-  'XDG_config/i3'
-  'XDG_config/i3status'
-  'XDG_config/picom'
+  'xdg_config/nvim'
+  'xdg_config/i3'
+  'xdg_config/i3status'
+  'xdg_config/picom'
 )
