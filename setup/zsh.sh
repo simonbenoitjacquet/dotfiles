@@ -19,7 +19,7 @@ install_zsh() {
   fi
   # Set the default shell to zsh if it isn't currently set to zsh
   if [[ ! "$SHELL" == "$(command -v zsh)" ]]; then
-    sudo chsh -s "$(command -v zsh)"
+    chsh -s "$(command -v zsh)"
   fi
 }
 

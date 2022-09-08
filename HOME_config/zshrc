@@ -85,6 +85,10 @@ alias cunam="/mnt/c/Users/simon/Documents/unamur"
 # Set Vim as the default editor.
 export EDITOR="vim"
 # Use Neovim instead of classic Vim (if available)
+# NVIM_APPIMAGE=$HOME/nvim.appimage
+# if [ -f "$NVIM_APPIMAGE" ]; then
+#   alias nvim="$NVIM_APPIMAGE"
+# fi
 if _has nvim; then
   alias vim="nvim"
   alias vi="nvim"
