@@ -42,7 +42,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # Background
-exec --no-startup-id nitrogen --set-zoom-fill $HOME/.dotfiles/images/bg1.jpg
+exec_always --no-startup-id nitrogen --set-zoom-fill $HOME/.dotfiles/images/bg1.jpg
 
 # Transparency
 exec --no-startup-id picom

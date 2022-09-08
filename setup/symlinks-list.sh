@@ -19,4 +19,5 @@ FOLDERS_TO_SYMLINK=(
   'XDG_config/nvim'
   'XDG_config/i3'
   'XDG_config/i3status'
+  'XDG_config/picom'
 )

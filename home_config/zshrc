@@ -82,6 +82,10 @@ setopt rmstarsilent # silence rm * confirmation
 alias cdoc="/mnt/c/Users/simon/Documents"
 alias cunam="/mnt/c/Users/simon/Documents/unamur"
 
+# Add light and dark themes
+alias light="gsettings set org.gnome.desktop.interface gtk-theme Adwaita"
+alias dark="gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark"
+
 # Set Vim as the default editor.
 export EDITOR="vim"
 # Use Neovim instead of classic Vim (if available)
