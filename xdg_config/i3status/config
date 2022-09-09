@@ -11,17 +11,23 @@ general {
         interval = 5
 }
 
-order += "disk /"
 order += "wireless _first_"
-order += "battery all"
+order += "ethernet _first_"
+# order += "battery all"
 order += "cpu_usage"
 order += "memory"
+# order += "disk /"
 # order += "load"
 order += "tztime local"
 
 wireless _first_ {
-        format_up = "W: (%quality at %essid) %ip"
-        format_down = "W: down"
+        format_up = "Wifi: %quality"
+        format_down = "Wifi"
+}
+
+ethernet _first_ {
+        format_up = "Ethernet"
+        format_down = "Ethernet"
 }
 
 cpu_usage {
@@ -45,6 +51,6 @@ load {
 }
 
 disk "/" {
-        format = "%avail"
+        format = "SSD: %avail free"
 }
 

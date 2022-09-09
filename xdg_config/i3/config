@@ -57,7 +57,7 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run
@@ -112,10 +112,10 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+p focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+c focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -174,6 +174,11 @@ mode "resize" {
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
+        bindsym Shift+h resize shrink width 10 px or 10 ppt
+        bindsym Shift+j resize grow height 10 px or 10 ppt
+        bindsym Shift+k resize shrink height 10 px or 10 ppt
+        bindsym Shift+l resize grow width 10 px or 10 ppt
+
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
@@ -195,6 +200,36 @@ mode "exit: [l]ogout, [r]eboot, [s]hutdown" {
   bindsym Return mode "default"
 }
 bindsym $mod+x mode "exit: [l]ogout, [r]eboot, [s]hutdown"
+
+set $app "apps: [f]irefox, [t]erminal, [m]onitor"
+mode $app {
+  bindsym f exec firefox, mode "default"
+  bindsym t exec i3-sensible-terminal, mode "default"
+  bindsym m exec gnome-system-monitor, mode "default"
+  bindsym Escape mode "default"
+  bindsym Return mode "default"
+}
+bindsym $mod+a mode $app
+
+set $browser "browser: [u]rl, [s]earch, [m]ail, [y]outube, [f]acebook, [d]eepl, [N]etflix, [o]verleaf, [.]dotfiles, [t]rello, u[n]amur, [p]references, [h]istory"
+mode $browser {
+  bindsym u exec firefox --new-tab, mode "default"
+  bindsym s exec firefox --new-tab https://www.google.com/, mode "default"
+  bindsym m exec firefox --new-tab https://mail.google.com/, mode "default"
+  bindsym y exec firefox --new-tab https://www.youtube.com/, mode "default"
+  bindsym f exec firefox --new-tab https://www.facebook.com/, mode "default"
+  bindsym d exec firefox --new-tab https://www.deepl.com/translator, mode "default"
+  bindsym Shift+n exec firefox --new-tab https://www.netflix.com/, mode "default"
+  bindsym o exec firefox --new-tab https://www.overleaf.com/, mode "default"
+  bindsym . exec firefox --new-tab https://github.com/simonbenoitjacquet/dotfiles, mode "default"
+  bindsym t exec firefox --new-tab https://trello.com/b/NNGc3M96/vim, mode "default"
+  bindsym n exec firefox --new-tab https://sogo.unamur.be/SOGo/, mode "default"
+  bindsym p exec firefox --preferences, mode "default"
+  bindsym h exec firefox --preferences, mode "default"
+  bindsym Escape mode "default"
+  bindsym Return mode "default"
+}
+bindsym $mod+b mode $browser
 
 # Easy
 # set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
