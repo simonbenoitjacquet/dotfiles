@@ -49,5 +49,14 @@ install_zsh_extras() {
   fi
 }
 
+install_solarized() {
+    sudo apt-get install -y dconf-cli
+    git clone \ 
+      https://github.com/aruhier/gnome-terminal-colors-solarized.git \
+      "~/solarized"
+    ~/solarized/install.sh
+}
+
 install_zsh
 install_zsh_extras
+install_solarized

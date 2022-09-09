@@ -161,7 +161,11 @@ source $ZSH/oh-my-zsh.sh
 # Alias `exa` as default `ls` command (if available).
 # This must come after OMZ. (The library overwrites this alias.)
 if _has exa; then
-  alias ls="exa"
+# need to disable in order for exa ls alias to work
+DISABLE_LS_COLORS="true"
+  alias ls="exa --icons"
+  alias ll="exa -l -g --icons"
+  alias lt="exa --tree --icons -a -I '.git|__pycache__|.mypy_cache|.ipynb_checkpoints'"
 fi
 
 # Source fzf scripts via via local installation.
