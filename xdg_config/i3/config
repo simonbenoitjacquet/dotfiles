@@ -201,9 +201,10 @@ mode "exit: [l]ogout, [r]eboot, [s]hutdown" {
 }
 bindsym $mod+x mode "exit: [l]ogout, [r]eboot, [s]hutdown"
 
-set $app "apps: [f]irefox, [t]erminal, [m]onitor"
+set $app "apps: [f]irefox, [t]erminal, [m]onitor, [c]hrome"
 mode $app {
   bindsym f exec firefox, mode "default"
+  bindsym c exec google-chrome, mode "default"
   bindsym t exec i3-sensible-terminal, mode "default"
   bindsym m exec gnome-system-monitor, mode "default"
   bindsym Escape mode "default"
@@ -211,7 +212,7 @@ mode $app {
 }
 bindsym $mod+a mode $app
 
-set $browser "browser: [u]rl, [s]earch, [m]ail, [y]outube, [f]acebook, [d]eepl, [N]etflix, [o]verleaf, [.]dotfiles, [t]rello, u[n]amur, [p]references, [h]istory"
+set $browser "browser: [u]rl, [s]earch, [m]ail, [y]outube, [f]acebook, [d]eepl, [N]etflix, [o]verleaf, [.]dotfiles, [t]rello, u[n]amur, [p]references, [h]istory, [c]hrome"
 mode $browser {
   bindsym u exec firefox --new-tab, mode "default"
   bindsym s exec firefox --new-tab https://www.google.com/, mode "default"
@@ -226,6 +227,7 @@ mode $browser {
   bindsym n exec firefox --new-tab https://sogo.unamur.be/SOGo/, mode "default"
   bindsym p exec firefox --preferences, mode "default"
   bindsym h exec firefox --preferences, mode "default"
+  bindsym c exec google-chrome, mode "default"
   bindsym Escape mode "default"
   bindsym Return mode "default"
 }
