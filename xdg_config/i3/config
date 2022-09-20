@@ -212,17 +212,17 @@ mode $app {
 }
 bindsym $mod+a mode $app
 
-set $browser "browser: [u]rl, [s]earch, [m]ail, [y]outube, [f]acebook, [d]eepl, [N]etflix, [o]verleaf, [.]dotfiles, [t]rello, u[n]amur, [p]references, [h]istory, [c]hrome"
+set $browser "browser: [u]rl, [s]earch, [m]ail, [y]outube, [f]acebook, [g]ithub, [d]eepl, [N]etflix, [o]verleaf, [t]rello, u[n]amur, [p]references, [h]istory, [c]hrome"
 mode $browser {
   bindsym u exec firefox --new-tab, mode "default"
   bindsym s exec firefox --new-tab https://www.google.com/, mode "default"
   bindsym m exec firefox --new-tab https://mail.google.com/, mode "default"
   bindsym y exec firefox --new-tab https://www.youtube.com/, mode "default"
   bindsym f exec firefox --new-tab https://www.facebook.com/, mode "default"
+  bindsym g exec firefox --new-tab https://github.com/simonbenoitjacquet, mode "default"
   bindsym d exec firefox --new-tab https://www.deepl.com/translator, mode "default"
   bindsym Shift+n exec firefox --new-tab https://www.netflix.com/, mode "default"
   bindsym o exec firefox --new-tab https://www.overleaf.com/, mode "default"
-  bindsym . exec firefox --new-tab https://github.com/simonbenoitjacquet/dotfiles, mode "default"
   bindsym t exec firefox --new-tab https://trello.com/b/NNGc3M96/vim, mode "default"
   bindsym n exec firefox --new-tab https://sogo.unamur.be/SOGo/, mode "default"
   bindsym p exec firefox --preferences, mode "default"
