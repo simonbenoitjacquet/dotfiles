@@ -27,14 +27,13 @@ vim.api.nvim_set_keymap('n', 'S', hop_search_before, { noremap = true })
 vim.api.nvim_set_keymap('v', 's', hop_search_after, { noremap = true })
 vim.api.nvim_set_keymap('v', 'S', hop_search_before, { noremap = true })
 
--- 
-vim.api.nvim_set_keymap('n', 'go', 'm`o<esc>``', { noremap = true })
-vim.api.nvim_set_keymap('n', 'gO', 'm`O<esc>``', { noremap = true })
-
 -- =============================== Map Leader ===============================
 -- Define mapleader.
 vim.g.mapleader = " "
 vim.api.nvim_set_keymap('n', '<leader>', '<nop>', {})
+
+-- Go to init file
+vim.api.nvim_set_keymap('n', '<leader>i', ':NvimTreeOpen ~/.config/nvim<CR>', { noremap = true })
 
 -- Maps for convenience.
 vim.api.nvim_set_keymap('n', '<leader>w', ':w<cr>', { noremap = true }) -- Write to file
@@ -42,8 +41,8 @@ vim.api.nvim_set_keymap('n', '<leader>q', ':q<cr>', { noremap = true }) -- Quit
 vim.api.nvim_set_keymap('n', '<leader>p', '"+p', { noremap = true }) -- Paste from system clipboard
 vim.api.nvim_set_keymap('n', '<leader>P', '"+P', { noremap = true }) -- Paste from system clipboard
 vim.api.nvim_set_keymap('n', '<leader>y', '"+y', { noremap = true }) -- Yank to system clipboard
-vim.api.nvim_set_keymap('n', '<leader>o', ':<C-u>call append(line("."),   repeat([""], v:count1))<CR>', { noremap = true }) -- Create blank line below cursor
-vim.api.nvim_set_keymap('n', '<leader>O', ':<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>', { noremap = true }) -- Create blank line after cursor
+vim.api.nvim_set_keymap('n', '<leader>o', ':call append(line("."),   repeat([""], v:count1))<CR>', { noremap = true }) -- Create blank line below cursor
+vim.api.nvim_set_keymap('n', '<leader>O', ':call append(line(".")-1, repeat([""], v:count1))<CR>', { noremap = true }) -- Create blank line after cursor
 
 -- Maps for buffers.
 vim.api.nvim_set_keymap('n', '<leader>bj', ':bnext<cr>', { noremap = true })
