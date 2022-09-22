@@ -1,1 +1,4 @@
 [[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
+
+# Turn off screen blanking
+xset s off && xset -dpms
