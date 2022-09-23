@@ -162,7 +162,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
-set $resize "resize: [h]igher, [l]ower, [w]ider, [n]arrower" 
+set $resize "resize: [h]igher, [l]ower, [w]ider, [t]hinner" 
 mode $resize {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -174,17 +174,17 @@ mode $resize {
         bindsym h resize grow height 10 px
         bindsym l resize shrink height 10 px
         bindsym w resize grow width 10 px
-        bindsym n resize shrink width 10 px
+        bindsym t resize shrink width 10 px
 
         bindsym ctrl+h resize grow height 1 px
         bindsym ctrl+l resize shrink height 1 px
         bindsym ctrl+w resize grow width 1 px
-        bindsym ctrl+n resize shrink width 1 px
+        bindsym ctrl+t resize shrink width 1 px
 
         bindsym Shift+h resize grow height 100 px
         bindsym Shift+l resize shrink height 100 px
         bindsym Shift+w resize grow width 100 px
-        bindsym Shift+n resize shrink width 100 px
+        bindsym Shift+t resize shrink width 100 px
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px
