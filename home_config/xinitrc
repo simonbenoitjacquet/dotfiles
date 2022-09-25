@@ -2,3 +2,5 @@
 
 # Turn off screen blanking
 xset s off && xset -dpms
+
+gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-dark'
