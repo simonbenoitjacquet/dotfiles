@@ -209,12 +209,13 @@ mode $exit {
 }
 bindsym $mod+x mode $exit
 
-set $app "apps: [f]irefox, [t]erminal, [m]onitor, [c]hrome"
+set $app "apps: [f]irefox, [t]erminal, [m]onitor, [c]hrome, [p]avucontrol"
 mode $app {
   bindsym f exec firefox, mode "default"
   bindsym c exec google-chrome, mode "default"
   bindsym t exec i3-sensible-terminal, mode "default"
   bindsym m exec gnome-system-monitor, mode "default"
+  bindsym p exec pavucontrol, mode "default"
   bindsym Escape mode "default"
   bindsym Return mode "default"
 }
