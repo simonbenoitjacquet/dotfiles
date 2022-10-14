@@ -105,6 +105,10 @@ if _has python3; then
     alias pip="pip3"
 fi
 
+if _has zathura; then
+    alias z="zathura"
+fi
+
 # Use 256 color for tmux.
 alias tmux="TERM=screen-256color-bce tmux"
 # Attempt to take over existing sessions before creating a new tmux session.
