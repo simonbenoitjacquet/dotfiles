@@ -30,6 +30,7 @@ vim.api.nvim_set_keymap('v', 'S', hop_search_before, { noremap = true })
 -- =============================== Map Leader ===============================
 -- Define mapleader.
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 vim.api.nvim_set_keymap('n', '<leader>', '<nop>', {})
 
 -- Go to init file
@@ -94,9 +95,9 @@ local open_paired_nb = [[:silent call jobstart('jupyter notebook '.expand('%:r')
 vim.api.nvim_set_keymap('n', '<leader>jn', create_pair_nb_py, opts)
 vim.api.nvim_set_keymap('n', '<leader>jo', open_paired_nb, opts)
 
-local add_cell_above = go_prev_cell .. [[:call append(line('.')-1, '# %%')<cr>]] .. add_blank_line_above .. 'j'
-local add_cell_below = [[/\n^# %%\|\%$/<cr>]] .. add_blank_line_below .. [[:call append(line('.')  , '# %%')<cr>]] .. 'jj'
-local add_new_cell = add_blank_line_above .. [[:call append(line('.')-1, '# %%')<cr>]]
+local add_cell_above = go_prev_cell .. [[:call append(line('.')-1, '# %%')<cr>]] .. add_blank_line_above .. add_blank_line_above .. 'j'
+local add_cell_below = [[/\n^# %%\|\%$/<cr>]] .. add_blank_line_below .. add_blank_line_below .. [[:call append(line('.')  , '# %%')<cr>]] .. 'jj'
+local add_new_cell = add_blank_line_above .. add_blank_line_above .. [[:call append(line('.')-1, '# %%')<cr>]]
 vim.api.nvim_set_keymap('n', '<leader>ja', add_cell_above, opts)
 vim.api.nvim_set_keymap('n', '<leader>jb', add_cell_below, opts)
 vim.api.nvim_set_keymap('n', '<leader>jc', add_new_cell, opts)
