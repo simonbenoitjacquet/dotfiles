@@ -35,6 +35,7 @@ plugins=(
   fd
   ripgrep
   fast-syntax-highlighting
+  fzf
 )
 
 # Returns whether the given command is executable or aliased.
@@ -119,6 +120,10 @@ if [[ -z "$TMUX" ]]; then
   TERM="xterm-256color"
 fi
 
+if _has fdfind; then
+    alias fd="fdfind"
+fi
+
 if _has rg; then
   export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 fi
@@ -131,11 +136,12 @@ fi
 # Configure fzf (if available).
 if _has fzf; then
   if _has fd; then
+    DISABLE_FZF_KEY_BINDINGS="false"
     # Use fd for fzf.
-    FZF_DEFAULT_COMMAND='fd --type f --follow --hidden'
+    FZF_DEFAULT_COMMAND='$(whence fd) --type f --follow --hidden'
     FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
     # Use fd for fzf directory search.
-    FZF_ALT_C_COMMAND='fd --type d --color never'
+    FZF_ALT_C_COMMAND='$(whence fd) --type d --color never --hidden'
   fi
 
   # Display source tree and file preview for CTRL-T and ALT-C.
