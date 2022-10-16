@@ -53,7 +53,7 @@ exec_always --no-startup-id nitrogen --set-zoom-fill $HOME/.dotfiles/images/bg1.
 exec --no-startup-id picom
 
 # Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+floating_modifier Control
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -164,8 +164,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
-set $resize "resize: [h]igher, [l]ower, [w]ider, [t]hinner" 
-mode $resize {
+set $resize "<b>resize:</b> [h]igher, [l]ower, [w]ider, [t]hinner" 
+mode --pango_markup $resize {
         # These bindings trigger as soon as you enter the resize mode
 
         # Pressing left will shrink the window’s width.
@@ -201,8 +201,8 @@ mode $resize {
 }
 bindsym $mod+r mode $resize
 
-set $exit "exit: [l]ogout, [r]eboot, [s]hutdown" 
-mode $exit {
+set $exit "<b>exit:</b> [l]ogout, [r]eboot, [s]hutdown" 
+mode --pango_markup $exit {
   bindsym l exec i3-msg exit
   bindsym r exec systemctl reboot
   bindsym s exec systemctl poweroff
@@ -211,8 +211,8 @@ mode $exit {
 }
 bindsym $mod+x mode $exit
 
-set $app "apps: [f]irefox, [t]erminal, [m]onitor, [c]hrome, [p]avucontrol, [g]imp, [z]athura, [w]esnoth"
-mode $app {
+set $app "<b>apps:</b> [f]irefox, [t]erminal, [m]onitor, [c]hrome, [p]avucontrol, [g]imp, [z]athura, [w]esnoth"
+mode --pango_markup $app {
   bindsym f exec firefox, mode "default"
   bindsym c exec google-chrome, mode "default"
   bindsym t exec i3-sensible-terminal, mode "default"
@@ -226,8 +226,8 @@ mode $app {
 }
 bindsym $mod+a mode $app
 
-set $browser "browser: [u]rl, [s]earch, [m]ail, [y]outube, [f]acebook, [g]ithub, [d]eepl, [N]etflix, [o]verleaf, [t]rello, u[n]amur, [p]references, [h]istory, [c]hrome"
-mode $browser {
+set $browser "<b>browser:</b> [u]rl, [s]earch, [m]ail, [y]outube, [f]acebook, [g]ithub, [d]eepl, [N]etflix, [o]verleaf, [t]rello, u[n]amur, [p]references, [h]istory, [c]hrome"
+mode --pango_markup $browser {
   bindsym u exec firefox --new-tab, mode "default"
   bindsym s exec firefox --new-tab https://www.google.com/, mode "default"
   bindsym m exec firefox --new-tab https://mail.google.com/, mode "default"
@@ -247,22 +247,6 @@ mode $browser {
 }
 bindsym $mod+b mode $browser
 
-# Easy
-# set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
-# mode "$mode_system" {
-#     bindsym l exec --no-startup-id i3exit lock, mode "default"
-#     bindsym e exec --no-startup-id i3exit logout, mode "default"
-#     bindsym s exec --no-startup-id i3exit suspend, mode "default"
-#     bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-#     bindsym r exec --no-startup-id i3exit reboot, mode "default"
-#     bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
-
-#     # back to normal: Enter or Escape
-#     bindsym Return mode "default"
-#     bindsym Escape mode "default"
-# }
-# bindsym $mod+x mode "$mode_system"
-
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -270,9 +254,24 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+# class                 border  bground text    indicator child_border
+client.focused          #658354 #4B6043 #FFFFFF #75975E   #4B6043
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        position top
-        status_command i3status
+    colors {
+        # background #000000
+        # statusline #ffffff
+        # separator #666666
+
+        # # <colorclass> <border> <background> <text>
+        focused_workspace  #a3be8c #222222 #a3be8c
+        active_workspace   #333333 #222222 #ffffff
+        # inactive_workspace #333333 #222222 #888888
+        urgent_workspace   #ebcb8b #222222 #ebcb8b
+        binding_mode       #000000 #000000 #ebcb8b
+    }
+    position top
+    status_command i3status
 }

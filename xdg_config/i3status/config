@@ -7,8 +7,11 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
-        colors = true
-        interval = 5
+    colors = true
+    color_good = "#a3be8c"
+    color_degraded = "#ebcb8b"
+    color_bad = "#bf616a"
+    interval = 5
 }
 
 order += "wireless _first_"
@@ -43,7 +46,7 @@ battery all {
 }
 
 tztime local {
-        format = "%Y-%m-%d %H:%M:%S"
+        format = "%H:%M:%S %d-%m-%Y"
 }
 
 load {
