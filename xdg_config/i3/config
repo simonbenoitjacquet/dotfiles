@@ -25,7 +25,6 @@ font pango:monospace 12px
 for_window [class="^.*"] border pixel 2
                           # class                 border  backgr. text    indicator child_border
 for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
-for_window [class="firefox" title="Library"] floating enable
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -53,18 +52,18 @@ exec_always --no-startup-id nitrogen --set-zoom-fill $HOME/.dotfiles/images/bg1.
 exec --no-startup-id picom
 
 
+for_window [class="firefox" title="Library"] floating enable
 
 # Hidden firefox instance
-for_window [class="firefox" title="background"] floating enable
-for_window [class="firefox" title="background"] resize set 1536 864
-for_window [class="firefox" title="background"] move center
-for_window [class="firefox" title="background"] move scratchpad
-for_window [class="firefox" title="background"] border pixel 3
+for_window [class="firefox"] floating enable
+for_window [class="firefox"] resize set 1536 864
+for_window [class="firefox"] move center
+for_window [class="firefox"] move scratchpad
+for_window [class="firefox"] border pixel 3
 
-exec --no-startup-id firefox -P Default 
-exec --no-startup-id firefox -no-remote -P Background
-
-bindsym $mod+g        [class="firefox" title="background"] scratchpad show
+# exec --no-startup-id firefox -P Default 
+exec --no-startup-id firefox -P Background
+bindsym $mod+g        [class="firefox"] scratchpad show
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier Control
