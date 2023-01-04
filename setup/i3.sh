@@ -15,6 +15,7 @@ install_others() {
     sudo apt-get install -y gimp
     sudo apt-get install -y pavucontrol
     sudo apt-get install -y zathura
+    sudo apt-get install -y xsel
 }
 remove_terminal_topbar() {
     gsettings set org.gnome.Terminal.Legacy.Settings headerbar "@mb false"

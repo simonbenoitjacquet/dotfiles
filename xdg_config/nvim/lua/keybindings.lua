@@ -37,11 +37,16 @@ vim.api.nvim_set_keymap('n', '<leader>', '<nop>', {})
 vim.api.nvim_set_keymap('n', '<leader>i', ':NvimTreeOpen ~/.config/nvim<CR>', { noremap = true })
 
 -- Maps for convenience.
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("n", "<leader>d", "\"_d")
+vim.keymap.set("v", "<leader>d", "\"_d")
 vim.api.nvim_set_keymap('n', '<leader>w', ':w<cr>', { noremap = true }) -- Write to file
 vim.api.nvim_set_keymap('n', '<leader>q', ':q<cr>', { noremap = true }) -- Quit
 vim.api.nvim_set_keymap('n', '<leader>p', '"+p', { noremap = true }) -- Paste from system clipboard
 vim.api.nvim_set_keymap('n', '<leader>P', '"+P', { noremap = true }) -- Paste from system clipboard
 vim.api.nvim_set_keymap('n', '<leader>y', '"+y', { noremap = true }) -- Yank to system clipboard
+vim.api.nvim_set_keymap('v', '<leader>y', '"+y', { noremap = true }) -- Yank to system clipboard
 
 local add_blank_line_below = ':<c-u>call append(line("."),   repeat([""], v:count1))<CR>'
 local add_blank_line_above = ':<c-u>call append(line(".")-1, repeat([""], v:count1))<CR>'
