@@ -1,21 +1,22 @@
 #!/usr/bin/env bash
 
 install_i3() {
-    sudo apt-get install -y i3
+    sudo apt install -y i3
 }  
 install_nitrogen() {
     # Handles background
-    sudo apt-get install -y nitrogen
+    sudo apt install -y nitrogen
 }
 install_picom() {
     # Transparency
-    sudo apt-get install -y picom
+    sudo apt install -y picom
 }
 install_others() {
-    sudo apt-get install -y gimp
-    sudo apt-get install -y pavucontrol
-    sudo apt-get install -y zathura
-    sudo apt-get install -y xsel
+    sudo apt install -y gimp
+    sudo apt install -y pavucontrol
+    sudo apt install -y zathura
+    sudo apt install -y xsel
+    pip install autotiling=1.8
 }
 remove_terminal_topbar() {
     gsettings set org.gnome.Terminal.Legacy.Settings headerbar "@mb false"

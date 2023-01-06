@@ -51,6 +51,8 @@ exec_always --no-startup-id nitrogen --set-zoom-fill $HOME/.dotfiles/images/bg1.
 # Transparency
 exec --no-startup-id picom
 
+exec_always --no-startup-id autotiling
+
 
 for_window [class="firefox" title="Library"] floating enable
 
