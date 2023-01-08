@@ -51,21 +51,26 @@ exec_always --no-startup-id nitrogen --set-zoom-fill $HOME/.dotfiles/images/bg1.
 # Transparency
 exec --no-startup-id picom
 
+# Autotiling 
 exec_always --no-startup-id autotiling
-
 
 for_window [class="firefox" title="Library"] floating enable
 
 # Hidden firefox instance
+# TODO: all firefox windows in the current workspace are 
+# Navigator - firefox
+# Investigate container around navigator
+# xwininfo -tree -root
 for_window [class="firefox"] floating enable
 for_window [class="firefox"] resize set 1536 864
 for_window [class="firefox"] move center
-for_window [class="firefox"] move scratchpad
 for_window [class="firefox"] border pixel 3
+
+for_window [class="firefox"] move scratchpad
+bindsym $mod+g        [class="firefox"] scratchpad show
 
 # exec --no-startup-id firefox -P Default 
 exec --no-startup-id firefox -P Background
-bindsym $mod+g        [class="firefox"] scratchpad show
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier Control
@@ -108,9 +113,9 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# TODO: remove as it is obsolete with autotiling
 # split in horizontal orientation
 bindsym $mod+n        split h
-
 # split in vertical orientation
 bindsym $mod+m        split v
 

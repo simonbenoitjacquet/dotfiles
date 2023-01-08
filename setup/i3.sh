@@ -17,6 +17,7 @@ install_others() {
     sudo apt install -y zathura
     sudo apt install -y xsel
     pip install autotiling=1.8
+    sudo mv $(which autotiling) /usr/bin
 }
 remove_terminal_topbar() {
     gsettings set org.gnome.Terminal.Legacy.Settings headerbar "@mb false"
