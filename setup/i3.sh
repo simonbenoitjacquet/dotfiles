@@ -16,6 +16,7 @@ install_others() {
     sudo apt install -y pavucontrol
     sudo apt install -y zathura
     sudo apt install -y xsel
+    sudo apt install -y maim
     pip install autotiling=1.8
     sudo mv $(which autotiling) /usr/bin
 }

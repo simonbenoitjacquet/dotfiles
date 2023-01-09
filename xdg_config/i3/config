@@ -49,13 +49,16 @@ floating_modifier Control
 
 # Modifier
 set $mod Mod4
-# Keybindings available: $mod+[imntuvyz] 
+# Keybindings available: $mod+[imntuvy] 
 
 # start a terminal
 bindsym $mod+Return   exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+q        kill
+
+# screenshot
+bindsym $mod+z        exec bash $HOME/.dotfiles/scripts/screenshot.sh, mode "default"
 
 # start dmenu (a program launcher)
 # TODO: replace dmenu with rofi
