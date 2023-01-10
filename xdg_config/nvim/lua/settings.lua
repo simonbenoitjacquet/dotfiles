@@ -35,7 +35,7 @@ vim.cmd "set path+=**"
 vim.opt.hidden = true -- Out of sight buffers are hidden and not deleted.
 vim.opt.swapfile = false -- For buffers.
 vim.opt.backup = false -- For buffers.
-vim.opt.undodir = vim.fn.expand('~') .. '/.vim/undodir' -- The directory for all undo of files.
+vim.opt.undodir = vim.fn.expand('~') .. '/.cache/nvim/undodir' -- The directory for all undo of files.
 vim.opt.undofile = true -- Use files to remember undo commands.
 
 -- Return to last edit position when opening files.
