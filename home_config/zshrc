@@ -5,6 +5,13 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# XDG - set defaults as they may not be set
+# See https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
+# and https://wiki.archlinux.org/title/XDG_Base_Directory#Support
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+
 # Set OMZ installation location.
 ZSH=$HOME/.oh-my-zsh
 DISABLE_UPDATE_PROMPT=true
@@ -138,7 +145,7 @@ if _has fzf; then
   if _has fd; then
     DISABLE_FZF_KEY_BINDINGS="false"
     # Use fd for fzf.
-    FZF_DEFAULT_COMMAND='$(whence fd) --type f --follow --hidden'
+    FZF_DEFAULT_COMMAND='$(whence fd) --type f --follow --hidden --ignore-file $HOME/.gitignore'
     FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
     # Use fd for fzf directory search.
     FZF_ALT_C_COMMAND='$(whence fd) --type d --color never --hidden'
