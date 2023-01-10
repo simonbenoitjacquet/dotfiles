@@ -151,7 +151,7 @@ if _has fzf; then
   fi
 
   # Bind alt-j/k/d/u to moving the preview window for fzf.
-  FZF_DEFAULT_OPTS="--bind alt-k:preview-up,alt-j:preview-down,alt-u:preview-page-up,alt-d:preview-page-down"
+  FZF_DEFAULT_OPTS="--bind tab:down,btab:up,alt-k:preview-up,alt-j:preview-down,alt-u:preview-page-up,alt-d:preview-page-down"
 
   # Show previews for files and directories.
   # Having `bat` or `highlight` (or any of the other binaries below) installed
