@@ -20,5 +20,4 @@ FOLDERS_TO_SYMLINK=(
   'xdg_config/i3'
   'xdg_config/i3status'
   'xdg_config/picom'
-  'xdg_config/fd'
 )
