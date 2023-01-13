@@ -50,6 +50,8 @@ vim.api.nvim_set_keymap('n', '<leader>p', '"+p', { noremap = true }) -- Paste fr
 vim.api.nvim_set_keymap('n', '<leader>P', '"+P', { noremap = true }) -- Paste from system clipboard
 vim.api.nvim_set_keymap('n', '<leader>y', '"+y', { noremap = true }) -- Yank to system clipboard
 vim.api.nvim_set_keymap('v', '<leader>y', '"+y', { noremap = true }) -- Yank to system clipboard
+vim.api.nvim_set_keymap('n', '<leader>Y', '"+Y', { noremap = true }) -- Yank to system clipboard
+vim.api.nvim_set_keymap('v', '<leader>Y', '"+Y', { noremap = true }) -- Yank to system clipboard
 
 local add_blank_line_below = ':<c-u>call append(line("."),   repeat([""], v:count1))<CR>'
 local add_blank_line_above = ':<c-u>call append(line(".")-1, repeat([""], v:count1))<CR>'
