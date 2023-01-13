@@ -49,7 +49,7 @@ floating_modifier Control
 
 # Modifier
 set $mod Mod4
-# Keybindings available: $mod+[imntuvy] 
+# Keybindings available: $mod+[intuy] 
 
 # start a terminal
 bindsym $mod+Return   exec i3-sensible-terminal
@@ -94,6 +94,12 @@ bindsym $mod+f        fullscreen toggle
 bindsym $mod+g        scratchpad show   
 # Hide window
 bindsym $mod+o        move scratchpad   
+
+# Vim marks
+# Make mark: read 1 character and mark the current window with this character
+bindsym $mod+m exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
+# Goto mark: read 1 character and go to the window with the character
+bindsym $mod+v exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s        layout stacking
