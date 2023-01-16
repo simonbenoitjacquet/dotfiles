@@ -148,7 +148,7 @@ if _has fzf; then
     FZF_DEFAULT_COMMAND='$(whence fd) --type f --follow --hidden --ignore-file $HOME/.gitignore'
     FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
     # Use fd for fzf directory search.
-    FZF_ALT_C_COMMAND='$(whence fd) --type d --color never --hidden'
+    FZF_ALT_C_COMMAND='$(whence fd) --type d --color never --hidden --ignore-file $HOME/.gitignore'
   fi
 
   # Display source tree and file preview for CTRL-T and ALT-C.
