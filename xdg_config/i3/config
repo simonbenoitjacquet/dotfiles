@@ -35,6 +35,8 @@ exec_always --no-startup-id nitrogen --set-zoom-fill ~/.dotfiles/images/bg1.jpg
 exec --no-startup-id picom 
 # Autotiling
 exec_always --no-startup-id autotiling 
+# Track last window
+exec --no-startup-id ~/.dotfiles/scripts/track-last-window.sh
 
 for_window [class="firefox" title="Library"] floating enable
 
@@ -75,6 +77,7 @@ bindsym $mod+Left     focus left
 bindsym $mod+Down     focus down
 bindsym $mod+Up       focus up
 bindsym $mod+Right    focus right
+bindsym $mod+t        [con_mark=_last] focus
 
 # move focused window
 bindsym $mod+Shift+h  move left
