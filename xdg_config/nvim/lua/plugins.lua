@@ -2,6 +2,7 @@ local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvi
 local compile_path = install_path..'/plugin/packer_compiled.lua'
 local bootstrap = vim.fn.empty(vim.fn.glob(install_path)) > 0
 
+
 -- For new installations, we may not have packer.
 -- We need to manually clone and install the package manager.
 if bootstrap then
@@ -69,7 +70,7 @@ packer.startup(function(use)
       'hrsh7th/cmp-calc',
       'onsails/lspkind-nvim',
     },
-    config = "require('plugin.cmp')"
+    config = "require('plugin.cmp')",
   }
 
   -- Treesitter for better syntax highlighting and whatnot.
@@ -131,7 +132,7 @@ packer.startup(function(use)
     -- To make new motions repeatable
     use 'tpope/vim-repeat'
     -- Highlights first unique character of each word 
-    use 'unblevable/quick-scope' 
+    use 'unblevable/quick-scope'
 
   -- Automatically sync all packages if we're bootstrapping.
   if bootstrap then

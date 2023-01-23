@@ -1,5 +1,6 @@
 local cmp = require('cmp')
 local lspkind = require('lspkind')
+require('plugin.snips')
 
 cmp.setup {
   -- Set the snippet generator. We use the "default" one written by the same author of this library.
