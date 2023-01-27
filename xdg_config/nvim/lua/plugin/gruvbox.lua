@@ -1,2 +1,6 @@
 vim.cmd "colorscheme gruvbox"
 vim.cmd "highlight Normal guibg=none"
+vim.cmd "highlight SignColumn guibg=none"
+vim.cmd "highlight SignColumn ctermbg=none"
+vim.cmd "highlight WinSeparator guibg=none"
+vim.cmd "highlight WinSeparator guifg=#282828"

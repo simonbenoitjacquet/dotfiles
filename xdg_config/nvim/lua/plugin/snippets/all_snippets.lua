@@ -46,9 +46,9 @@ ls.add_snippets("markdown", {
     }),
     -- Insert block of code in markdown
     s("code", {
-        t("```\n"),
-        i(1),
-        t("```\n"),
+        t({"```", ""}),
+        i(0),
+        t({" ", "```"}),
     }),
     -- Insert small code
     s("cd", {

@@ -8,9 +8,11 @@ vim.opt.number = true -- Show line numbers
 vim.opt.relativenumber = true -- Show distance to lines
 vim.opt.termguicolors = true -- Match terminal colors with GUI program.
 vim.opt.wrap = false -- Lines do not wrap around when too long.
-vim.opt.signcolumn = 'yes' -- Column showing when a line is too long.
-vim.opt.colorcolumn = '80' -- Column inded of signcolumn
--- vim.opt.cmdheight = 1 -- Height of the command bar
+-- vim.opt.signcolumn = 'yes' -- Column showing when a line is too long.
+-- vim.opt.colorcolumn = '80' -- Column inded of signcolumn
+-- vim.opt.winbar = '%=%m %f' -- Add filename for each window
+vim.opt.laststatus = 3 -- Global statusline
+vim.opt.cmdheight = 2 -- Height of the command bar
 vim.cmd 'syntax on'
 
 -- Indentation settings

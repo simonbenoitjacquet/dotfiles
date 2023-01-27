@@ -93,22 +93,38 @@ local c = {
 		left_sep = "",
 		right_sep = " ",
 	},
-	separator = {
-		provider = "",
-	},
 	fileinfo = {
-        icon = "",
 		provider = {
 			name = "file_info",
 			opts = {
 				type = "relative-short",
+                file_modified_icon = "*",
+                file_readonly_icon = "<READONLY> ",
 			},
 		},
+        icon = "",
 		hl = {
 			style = "bold",
 		},
 		left_sep = " ",
 		right_sep = " ",
+	},
+	wb_fileinfo = {
+		provider = {
+			name = "file_info",
+			opts = {
+				type = "relative",
+                file_modified_icon = "*",
+                file_readonly_icon = "<READONLY> ",
+			},
+		},
+        icon = "",
+		hl = {
+			style = "bold",
+            bg = "none",
+		},
+		left_sep  = { str = " ", hl = { bg = "none" }, },
+		right_sep = { str = " ", hl = { bg = "none" }, },
 	},
 	diagnostic_errors = {
 		provider = "diagnostic_errors",
@@ -189,14 +205,6 @@ local c = {
 		left_sep = " ",
 		right_sep = " ",
 	},
-	line_percentage = {
-		provider = "line_percentage",
-		hl = {
-			style = "bold",
-		},
-		left_sep = " ",
-		right_sep = " ",
-	},
 	scroll_bar = {
 		provider = "scroll_bar",
 		hl = {
@@ -212,7 +220,6 @@ local left = {
 	c.gitDiffAdded,
     c.gitDiffRemoved,
 	c.gitDiffChanged,
-	c.separator,
 }
 
 local middle = {
@@ -227,7 +234,6 @@ local right = {
 	c.file_type,
 	c.lsp_client_names,
 	c.position,
-	-- c.line_percentage,
 	c.scroll_bar,
 }
 
@@ -244,16 +250,26 @@ local components = {
 	},
 }
 
-local disable = {
-    filetypes = {
-        '^NvimTree$',
-    }
-}
-
 feline.setup({
 	components = components,
 	theme = one_monokai,
 	vi_mode_colors = vi_mode_colors,
-    disable = disable,
-    separators = separators,
+})
+
+local wb_right = {
+	c.wb_fileinfo,
+}
+
+local wb_components = {
+	active = {
+        {},
+		wb_right,
+	},
+	inactive = {
+        {},
+		wb_right,
+	},
+}
+feline.winbar.setup({
+	components = wb_components,
 })
