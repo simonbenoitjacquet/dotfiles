@@ -115,20 +115,28 @@ packer.startup(function(use)
   use {'nacro90/numb.nvim', config = "require('plugin.numb')"}
 
     -- Define new motions
+    use 'tpope/vim-unimpaired'                      -- [* | ]*
     use 'tpope/vim-surround'                        -- ys | cs | ds
     use 'tpope/vim-commentary'                      -- gc
     use 'vim-scripts/ReplaceWithRegister'           -- gr
     use 'christoomey/vim-titlecase'                 -- gz
-    use 'christoomey/vim-sort-motion'               -- gs
+    use {
+        'christoomey/vim-sort-motion',              -- gS (default is gs, clashes with leap.nvim)
+        setup = function () vim.cmd[[let g:sort_motion = 'gS']] end,
+    }
     use 'christoomey/vim-system-copy'               -- cp | cv
     use {
-      'phaazon/hop.nvim', -- s | S
-      branch = 'v2', -- optional but strongly recommended
-      config = function()
-        -- you can configure Hop the way you like here; see :h hop-config
-        require'hop'.setup()
-      end
+        'ggandor/leap.nvim',                        -- s | S | gs
+        config = function() require("leap").set_default_keymaps() end,
     }
+    -- use {
+    --   'phaazon/hop.nvim', -- s | S
+    --   branch = 'v2', -- optional but strongly recommended
+    --   config = function()
+    --     -- you can configure Hop the way you like here; see :h hop-config
+    --     require'hop'.setup()
+    --   end
+    -- }
     -- To make new motions repeatable
     use 'tpope/vim-repeat'
     -- Highlights first unique character of each word 

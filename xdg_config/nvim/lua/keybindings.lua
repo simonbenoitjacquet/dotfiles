@@ -21,15 +21,6 @@ vim.cmd 'command! WQA wqa'
 -- Remap backspace to delete backwards like in insert mode
 vim.api.nvim_set_keymap('n', '<BS>', 'hx', { noremap = true })
 
--- Remap s and S to hop around file.
-require'hop'.setup()
-local hop_search_before = ":lua require'hop'.hint_char2({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR })<cr>"
-local hop_search_after  = ":lua require'hop'.hint_char2({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR })<cr>"
-vim.api.nvim_set_keymap('n', 's', hop_search_after, { noremap = true })
-vim.api.nvim_set_keymap('n', 'S', hop_search_before, { noremap = true })
-vim.api.nvim_set_keymap('v', 's', hop_search_after, { noremap = true })
-vim.api.nvim_set_keymap('v', 'S', hop_search_before, { noremap = true })
-
 -- =============================== Map Leader ===============================
 -- Define mapleader.
 vim.g.mapleader = " "
