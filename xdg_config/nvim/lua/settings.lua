@@ -9,16 +9,15 @@ vim.opt.relativenumber = true -- Show distance to lines
 vim.opt.termguicolors = true -- Match terminal colors with GUI program.
 vim.opt.wrap = false -- Lines do not wrap around when too long.
 -- vim.opt.signcolumn = 'yes' -- Column showing when a line is too long.
--- vim.opt.colorcolumn = '80' -- Column inded of signcolumn
--- vim.opt.winbar = '%=%m %f' -- Add filename for each window
+vim.opt.colorcolumn = '80' -- Column inded of signcolumn
 vim.opt.laststatus = 3 -- Global statusline
 vim.opt.cmdheight = 2 -- Height of the command bar
 vim.cmd 'syntax on'
 
 -- Indentation settings
-vim.opt.tabstop = 4 -- Make tabs 4 characters wide.
-vim.opt.softtabstop = 4 -- Make tabs 4 characters wide.
-vim.opt.shiftwidth = 4 -- Indent by 4 spaces by default.
+vim.opt.tabstop = 2 -- Make tabs 2 characters wide.
+vim.opt.softtabstop = 2 -- Make tabs 2 characters wide.
+vim.opt.shiftwidth = 2 -- Indent by 2 spaces by default.
 vim.opt.expandtab = true -- Pressing tab converts to spaces.
 vim.opt.smartindent = true -- When making a new line, puts the cursor at the expected indentation.
 
@@ -40,10 +39,30 @@ vim.opt.backup = false -- For buffers.
 vim.opt.undodir = vim.fn.expand('~') .. '/.cache/nvim/undodir' -- The directory for all undo of files.
 vim.opt.undofile = true -- Use files to remember undo commands.
 
--- Return to last edit position when opening files.
-vim.cmd[[
-autocmd BufReadPost *
-\ if line("'\"") > 0 && line("'\"") <= line("$") |
-\   exe "normal! g`\"" |
-\ endif
-]]
+-- Autocommands for settings
+local fn = vim.fn
+vim.api.nvim_create_augroup('settings', {})
+
+-- Return to last edit
+vim.api.nvim_create_autocmd('BufReadPost', {
+  group    = 'settings',
+  pattern  = '*',
+  callback = function()
+    if fn.line("'\"") > 0 and fn.line("'\"") <= fn.line("$") then
+      fn.setpos('.', fn.getpos("'\""))
+      vim.api.nvim_feedkeys('zz', 'n', true)
+    end
+  end
+})
+
+-- Only python files have tabs of 4 spaces
+vim.api.nvim_create_autocmd('BufEnter', {
+  group    = 'settings',
+  pattern  = { '.py', '.ipynb' },
+  callback = function()
+    vim.opt.tabstop = 4
+    vim.opt.softtabstop = 4
+    vim.opt.shiftwidth = 4
+  end
+})
+

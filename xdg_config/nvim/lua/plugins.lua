@@ -26,17 +26,10 @@ packer.startup(function(use)
   -- Cosmetic plugins.
   use {'lukas-reineke/indent-blankline.nvim', config = "require('plugin.indent-blankline')"}
   use {'gruvbox-community/gruvbox', config = 'require "plugin.gruvbox"'}
-  -- use {'ishan9299/nvim-solarized-lua', config = "require('plugin.solarized')"}
-  -- use {'RRethy/vim-hexokinase', config = "require('plugin.hexokinase')"} -- Preview of hex colors
   use {
     'feline-nvim/feline.nvim', -- Displays a windbar at the bottom above command line.
     config = "require('plugin.feline')",
   }
---   use {
---     'akinsho/bufferline.nvim',
---     config = "require('plugin.bufferline')",
---     requires = 'kyazdani42/nvim-web-devicons',
---   }
   use {
     'kyazdani42/nvim-tree.lua', -- File explorer
     config = "require('plugin.nvim-tree')",
@@ -120,23 +113,11 @@ packer.startup(function(use)
     use 'tpope/vim-commentary'                      -- gc
     use 'vim-scripts/ReplaceWithRegister'           -- gr
     use 'christoomey/vim-titlecase'                 -- gz
-    use {
-        'christoomey/vim-sort-motion',              -- gS (default is gs, clashes with leap.nvim)
-        setup = function () vim.cmd[[let g:sort_motion = 'gS']] end,
-    }
     use 'christoomey/vim-system-copy'               -- cp | cv
     use {
         'ggandor/leap.nvim',                        -- s | S | gs
         config = function() require("leap").set_default_keymaps() end,
     }
-    -- use {
-    --   'phaazon/hop.nvim', -- s | S
-    --   branch = 'v2', -- optional but strongly recommended
-    --   config = function()
-    --     -- you can configure Hop the way you like here; see :h hop-config
-    --     require'hop'.setup()
-    --   end
-    -- }
     -- To make new motions repeatable
     use 'tpope/vim-repeat'
     -- Highlights first unique character of each word 

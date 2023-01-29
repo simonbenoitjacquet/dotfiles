@@ -5,74 +5,75 @@ vim.cmd 'command! PST PackerStatus'
 vim.cmd 'command! LSP LspInstall'
 vim.cmd 'command! LS LspInstallInfo'
 
--- Alias most permutations of capitalized 'wqa' commands to work.
-vim.cmd 'command! Q q'
-vim.cmd 'command! W w'
-vim.cmd 'command! WQ wq'
-vim.cmd 'command! Wq wq'
-vim.cmd 'command! WA wa'
-vim.cmd 'command! Wa wa'
-vim.cmd 'command! QA qa'
-vim.cmd 'command! Qa qa'
-vim.cmd 'command! Wqa wqa'
-vim.cmd 'command! WQa wqa'
-vim.cmd 'command! WQA wqa'
-
 -- Remap backspace to delete backwards like in insert mode
-vim.api.nvim_set_keymap('n', '<BS>', 'hx', { noremap = true })
+vim.keymap.set('n', '<BS>', 'hx')
 
 -- =============================== Map Leader ===============================
+-- ctrl maps not useful (can overwrite)
+-- normal mode:
+--CTRL-B CTRL-Y CTRL-F CTRL-E CTRL-H CTRL-J CTRL-K CTRL-L CTRL-M CTRL-N CTRL-P
+--CTRL-Q CTRL-R CTRL-S
+
 -- Define mapleader.
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.api.nvim_set_keymap('n', '<leader>', '<nop>', {})
+vim.keymap.set('n', '<leader>', '<nop>')
 
 -- Go to init file
-vim.api.nvim_set_keymap('n', '<leader>i', ':NvimTreeOpen ~/.config/nvim<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>i', ':NvimTreeOpen ~/.config/nvim<CR>')
 
 -- Maps for convenience.
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<leader>d", "\"_d")
 vim.keymap.set("v", "<leader>d", "\"_d")
-vim.api.nvim_set_keymap('n', '<leader>w', ':w<cr>', { noremap = true }) -- Write to file
-vim.api.nvim_set_keymap('n', '<leader>q', ':q<cr>', { noremap = true }) -- Quit
-vim.api.nvim_set_keymap('n', '<leader>p', '"+p', { noremap = true }) -- Paste from system clipboard
-vim.api.nvim_set_keymap('n', '<leader>P', '"+P', { noremap = true }) -- Paste from system clipboard
-vim.api.nvim_set_keymap('n', '<leader>y', '"+y', { noremap = true }) -- Yank to system clipboard
-vim.api.nvim_set_keymap('v', '<leader>y', '"+y', { noremap = true }) -- Yank to system clipboard
-vim.api.nvim_set_keymap('n', '<leader>Y', '"+Y', { noremap = true }) -- Yank to system clipboard
-vim.api.nvim_set_keymap('v', '<leader>Y', '"+Y', { noremap = true }) -- Yank to system clipboard
+vim.keymap.set('n', '<leader>w', '<cmd>w<cr>') -- Write to file
+vim.keymap.set('n', '<leader>q', '<cmd>q<cr>') -- Quit
+vim.keymap.set('n', '<leader>p', '"+p') -- Paste from system clipboard
+vim.keymap.set('n', '<leader>P', '"+P') -- Paste from system clipboard
+vim.keymap.set('n', '<leader>y', '"+y') -- Yank to system clipboard
+vim.keymap.set('v', '<leader>y', '"+y') -- Yank to system clipboard
+vim.keymap.set('n', '<leader>Y', '"+Y') -- Yank to system clipboard
+vim.keymap.set('v', '<leader>Y', '"+Y') -- Yank to system clipboard
 
 local add_blank_line_below = ':<c-u>call append(line("."),   repeat([""], v:count1))<CR>'
 local add_blank_line_above = ':<c-u>call append(line(".")-1, repeat([""], v:count1))<CR>'
-vim.api.nvim_set_keymap('n', '<leader>o', add_blank_line_below, { noremap = true }) -- Create blank line below cursor
-vim.api.nvim_set_keymap('n', '<leader>O', add_blank_line_above, { noremap = true }) -- Create blank line after cursor
+vim.keymap.set('n', '<leader>o', add_blank_line_below) -- Create blank line below cursor
+vim.keymap.set('n', '<leader>O', add_blank_line_above) -- Create blank line after cursor
 
 -- Maps for buffers.
-vim.api.nvim_set_keymap('n', '<leader>bj', ':bnext<cr>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>bk', ':bprev<cr>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>bn', ':bnext<cr>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>bp', ':bprev<cr>', { noremap = true })
-
--- Maps for windows.
-vim.api.nvim_set_keymap('n', '<leader>c', '<c-w>', { noremap = true })
+vim.keymap.set('n', '<leader>bj', '<cmd>bnext<cr>')
+vim.keymap.set('n', '<leader>bk', '<cmd>bprev<cr>')
+vim.keymap.set('n', '<leader>bn', '<cmd>bnext<cr>')
+vim.keymap.set('n', '<leader>bp', '<cmd>bprev<cr>')
 
 -- Maps for Telescope.
-vim.api.nvim_set_keymap('n', '<leader>tf', ':Telescope find_files<cr>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>tg', ':Telescope live_grep<cr>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>tb', ':Telescope buffers<cr>', { noremap = true })
+local telescope = require('plugin.telescope')
+vim.keymap.set('n', '<c-_>', telescope.current_buffer_fuzzy_find)
+vim.keymap.set('n', '<leader>tt', telescope.builtin)
+vim.keymap.set('n', '<leader>tk', telescope.keymaps)
+vim.keymap.set('n', '<leader>tb', telescope.buffers)
+vim.keymap.set('n', '<leader>tf', telescope.find_files)
+vim.keymap.set('n', '<leader>f', telescope.find_files)
+vim.keymap.set('n', '<leader>tl', telescope.live_grep)
+vim.keymap.set('n', '<leader>to', telescope.oldfiles)
+vim.keymap.set('n', '<leader>tr', telescope.resume)
+vim.keymap.set('n', '<leader>gf', telescope.git_files)
 
--- Maps to navigate files in a tree with NvimTreeToggle.
-vim.api.nvim_set_keymap('n', '<leader>f', ':NvimTreeToggle<CR>', { noremap = true })
+-- Other possible mappings:
+-- > grep_string git_files git_status pickers commands quickfix
+-- > command_history help_tags reloader marks registers autocommands
+
+-- Nerdtree
+vim.keymap.set('n', '<leader>n', '<cmd>NvimTreeToggle<cr>')
 
 -- Remap <ctrl-c> to <esc>. This prevents cmp-buffer from running into errors.
 -- https://github.com/hrsh7th/cmp-buffer/issues/30#issuecomment-994011089
-vim.api.nvim_set_keymap('i', '<C-c>', '<Esc>\\`^', { noremap = true })
+vim.keymap.set('i', '<C-c>', '<Esc>\\`^')
+
 
 -- =============================== Jupyter notebook ===============================
-
-local opts = { noremap=true, silent=true }
+-- TODO: put in a separate file
 
 vim.api.nvim_command([[
 augroup AutoSyncNotebooksOnSave
@@ -83,25 +84,25 @@ augroup END
 
 local go_next_cell = [[/^# %%\|\%$/<cr>]]
 local go_prev_cell = [[?^# %%\|\%^?<cr>]]
-vim.api.nvim_set_keymap('n', '<leader>jj', go_next_cell, opts)
-vim.api.nvim_set_keymap('n', '<leader>jk', go_prev_cell, opts)
+vim.keymap.set('n', '<leader>jj', go_next_cell)
+vim.keymap.set('n', '<leader>jk', go_prev_cell)
 
 local execute_cell = [[:silent lua vim.cmd("!python3 -m jupyter_ascending.requests.execute --filename % --line "..vim.fn.line('.'))<cr>]]
 local execute_all_cells = [[:silent !python3 -m jupyter_ascending.requests.execute_all --filename %<cr>]]
-vim.api.nvim_set_keymap('n', '<leader>jx', execute_cell, opts)
-vim.api.nvim_set_keymap('n', '<leader>jX', execute_all_cells, opts)
+vim.keymap.set('n', '<leader>jx', execute_cell)
+vim.keymap.set('n', '<leader>jX', execute_all_cells)
 
 local create_pair_nb_py = [[:silent let fname = input('Notebook name: ') | execute '!python3 -m jupyter_ascending.scripts.make_pair --base ' . fname<cr>]]
 local open_paired_nb = [[:silent call jobstart('jupyter notebook '.expand('%:r').'.ipynb')<cr>]]
-vim.api.nvim_set_keymap('n', '<leader>jn', create_pair_nb_py, opts)
-vim.api.nvim_set_keymap('n', '<leader>jo', open_paired_nb, opts)
+vim.keymap.set('n', '<leader>jn', create_pair_nb_py)
+vim.keymap.set('n', '<leader>jo', open_paired_nb)
 
 local add_cell_above = go_prev_cell .. [[:call append(line('.')-1, '# %%')<cr>]] .. add_blank_line_above .. add_blank_line_above .. 'j'
 local add_cell_below = [[/\n^# %%\|\%$/<cr>]] .. add_blank_line_below .. add_blank_line_below .. [[:call append(line('.')  , '# %%')<cr>]] .. 'jj'
 local add_new_cell = add_blank_line_above .. add_blank_line_above .. [[:call append(line('.')-1, '# %%')<cr>]]
-vim.api.nvim_set_keymap('n', '<leader>ja', add_cell_above, opts)
-vim.api.nvim_set_keymap('n', '<leader>jb', add_cell_below, opts)
-vim.api.nvim_set_keymap('n', '<leader>jc', add_new_cell, opts)
+vim.keymap.set('n', '<leader>ja', add_cell_above)
+vim.keymap.set('n', '<leader>jb', add_cell_below)
+vim.keymap.set('n', '<leader>jc', add_new_cell)
 
 local restart_kernel = [[:silent !python3 -m jupyter_ascending.requests.restart --filename %<cr>]]
-vim.api.nvim_set_keymap('n', '<leader>jr', restart_kernel, opts)
+vim.keymap.set('n', '<leader>jr', restart_kernel)
