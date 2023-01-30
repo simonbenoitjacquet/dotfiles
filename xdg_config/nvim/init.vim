@@ -4,7 +4,8 @@ lua pcall(require, 'impatient')
 
 lua require('plugins')
 lua require('settings')
-lua require('keybindings')
+lua require('keybindings') -- general keybindings
+lua require('ftconfigs') -- filetype specific configs
 
 " Source custom configs (not under version control).
 if filereadable(glob("~/.vimrc.local"))

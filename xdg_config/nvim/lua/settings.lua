@@ -9,7 +9,7 @@ vim.opt.relativenumber = true -- Show distance to lines
 vim.opt.termguicolors = true -- Match terminal colors with GUI program.
 vim.opt.wrap = false -- Lines do not wrap around when too long.
 -- vim.opt.signcolumn = 'yes' -- Column showing when a line is too long.
-vim.opt.colorcolumn = '80' -- Column inded of signcolumn
+-- vim.opt.colorcolumn = '80' -- Column inded of signcolumn
 vim.opt.laststatus = 3 -- Global statusline
 vim.opt.cmdheight = 2 -- Height of the command bar
 vim.cmd 'syntax on'
@@ -52,17 +52,6 @@ vim.api.nvim_create_autocmd('BufReadPost', {
       fn.setpos('.', fn.getpos("'\""))
       vim.api.nvim_feedkeys('zz', 'n', true)
     end
-  end
-})
-
--- Only python files have tabs of 4 spaces
-vim.api.nvim_create_autocmd('BufEnter', {
-  group    = 'settings',
-  pattern  = { '.py', '.ipynb' },
-  callback = function()
-    vim.opt.tabstop = 4
-    vim.opt.softtabstop = 4
-    vim.opt.shiftwidth = 4
   end
 })
 
