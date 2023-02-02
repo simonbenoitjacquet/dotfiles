@@ -1,72 +1,56 @@
--- Abbreviate common commands.
-vim.cmd 'command! PI PackerInstall'
-vim.cmd 'command! PS PackerSync'
-vim.cmd 'command! PST PackerStatus'
-vim.cmd 'command! LSP LspInstall'
-vim.cmd 'command! LS LspInstallInfo'
-
--- Remap backspace to delete backwards like in insert mode
-vim.keymap.set('n', '<BS>', 'hx')
-
--- =============================== Map Leader ===============================
--- ctrl maps not useful (can overwrite)
--- normal mode:
---CTRL-B CTRL-Y CTRL-F CTRL-E CTRL-H CTRL-J CTRL-K CTRL-L CTRL-M CTRL-N CTRL-P
---CTRL-Q CTRL-R CTRL-S
-
--- Define mapleader.
+-- Mapleader
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+
+-- Unbind mapleader
 vim.keymap.set('n', '<leader>', '<nop>')
+vim.keymap.set('i', 'jk', '<esc>')
 
--- Go to init file
-vim.keymap.set('n', '<leader>i', ':NvimTreeOpen ~/.config/nvim<CR>')
+-- Maps for convenience
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- Move highlighted text down
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- Move highlighted text up
+vim.keymap.set({"n", "v"}, '<leader>w', '<cmd>w<cr>') -- Write to file
+vim.keymap.set({"n", "v"}, '<leader>q', '<cmd>q<cr>') -- Quit
+vim.keymap.set({"n", "v"}, "<leader>d", "\"_d") -- Delete into void registry
+vim.keymap.set({"n", "v"}, "<leader>D", "\"_D") -- Delete into void registry
+vim.keymap.set({"n", "v"}, '<leader>p', '"+p') -- Paste from system clipboard
+vim.keymap.set({"n", "v"}, '<leader>P', '"+P') -- Paste from system clipboard
+vim.keymap.set({"n", "v"}, '<leader>y', '"+y') -- Yank to system clipboard
+vim.keymap.set({"n", "v"}, '<leader>Y', '"+Y') -- Yank to system clipboard
+vim.keymap.set({"n", "v"}, '<leader>o',
+  ':<c-u>call append(line("."),   repeat([""], v:count1))<cr>') -- Create blank line below cursor
+vim.keymap.set({"n", "v"}, '<leader>O',
+  ':<c-u>call append(line(".")-1, repeat([""], v:count1))<cr>') -- Create blank line above cursor
 
--- Maps for convenience.
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-vim.keymap.set("n", "<leader>d", "\"_d")
-vim.keymap.set("v", "<leader>d", "\"_d")
-vim.keymap.set('n', '<leader>w', '<cmd>w<cr>') -- Write to file
-vim.keymap.set('n', '<leader>q', '<cmd>q<cr>') -- Quit
-vim.keymap.set('n', '<leader>p', '"+p') -- Paste from system clipboard
-vim.keymap.set('n', '<leader>P', '"+P') -- Paste from system clipboard
-vim.keymap.set('n', '<leader>y', '"+y') -- Yank to system clipboard
-vim.keymap.set('v', '<leader>y', '"+y') -- Yank to system clipboard
-vim.keymap.set('n', '<leader>Y', '"+Y') -- Yank to system clipboard
-vim.keymap.set('v', '<leader>Y', '"+Y') -- Yank to system clipboard
-
-local add_blank_line_below = ':<c-u>call append(line("."),   repeat([""], v:count1))<CR>'
-local add_blank_line_above = ':<c-u>call append(line(".")-1, repeat([""], v:count1))<CR>'
-vim.keymap.set('n', '<leader>o', add_blank_line_below) -- Create blank line below cursor
-vim.keymap.set('n', '<leader>O', add_blank_line_above) -- Create blank line after cursor
-
--- Maps for buffers.
+-- Buffers
 vim.keymap.set('n', '<leader>bj', '<cmd>bnext<cr>')
 vim.keymap.set('n', '<leader>bk', '<cmd>bprev<cr>')
-vim.keymap.set('n', '<leader>bn', '<cmd>bnext<cr>')
-vim.keymap.set('n', '<leader>bp', '<cmd>bprev<cr>')
+vim.keymap.set('n', '<leader>bn', '<cmd>enew<cr>')
 
--- Maps for Telescope.
-local telescope = require('plugin.telescope')
-vim.keymap.set('n', '<c-_>', telescope.current_buffer_fuzzy_find)
-vim.keymap.set('n', '<leader>tt', telescope.builtin)
-vim.keymap.set('n', '<leader>tk', telescope.keymaps)
-vim.keymap.set('n', '<leader>tb', telescope.buffers)
-vim.keymap.set('n', '<leader>tf', telescope.find_files)
-vim.keymap.set('n', '<leader>f', telescope.find_files)
-vim.keymap.set('n', '<leader>tl', telescope.live_grep)
-vim.keymap.set('n', '<leader>to', telescope.oldfiles)
-vim.keymap.set('n', '<leader>tr', telescope.resume)
-vim.keymap.set('n', '<leader>gf', telescope.git_files)
+-- Tabs
+vim.keymap.set('n', '<leader>tj', '<cmd>tabnext<cr>')
+vim.keymap.set('n', '<leader>tk', '<cmd>tabprev<cr>')
+vim.keymap.set('n', '<leader>tc', '<cmd>tabclose<cr>')
+vim.keymap.set('n', '<leader>tn', '<cmd>tabnew<cr>')
 
--- Other possible mappings:
--- > grep_string git_files git_status pickers commands quickfix
--- > command_history help_tags reloader marks registers autocommands
+-- Telescope
+local builtin = require('telescope.builtin')
+local custom = require('plugin.telescope')
+vim.keymap.set('n', '<leader>ff', builtin.find_files)
+vim.keymap.set('n', '<leader>fo', builtin.oldfiles)
+vim.keymap.set('n', '<leader>fg', builtin.git_files)
+vim.keymap.set('n', '<leader>fl', builtin.live_grep)
+vim.keymap.set('n', '<leader>fk', builtin.keymaps)
+vim.keymap.set('n', '<leader>fc', builtin.current_buffer_fuzzy_find)
+vim.keymap.set('n', '<leader>fb', builtin.buffers)
+vim.keymap.set('n', '<leader>ft', builtin.builtin)
+vim.keymap.set('n', '<leader>fd', custom.switch_directory)
+vim.keymap.set('n', '<leader>fi', custom.search_config)
 
 -- Nerdtree
 vim.keymap.set('n', '<leader>n', '<cmd>NvimTreeToggle<cr>')
+vim.keymap.set('n', '<leader>i', ':NvimTreeOpen ~/.config/nvim<cr>') -- Go to init file
 
--- Remap <ctrl-c> to <esc>. This prevents cmp-buffer from running into errors.
--- https://github.com/hrsh7th/cmp-buffer/issues/30#issuecomment-994011089
-vim.keymap.set('i', '<C-c>', '<Esc>\\`^')
+-- Source files
+vim.keymap.set('n', '<leader>sc', '<cmd>source %<cr>') -- Source current file
+-- TODO: resource all files

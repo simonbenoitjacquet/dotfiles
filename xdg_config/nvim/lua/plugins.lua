@@ -71,6 +71,10 @@ packer.startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     config = "require('plugin.treesitter')",
     run = ':TSUpdate',
+    requires = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      'nvim-treesitter/nvim-treesitter-refactor',
+    },
   }
   use {
     'SmiteshP/nvim-gps',

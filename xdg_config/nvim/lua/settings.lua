@@ -1,5 +1,6 @@
 -- General vim settings.
 vim.opt.mouse = 'a' -- Enable mouse usage.
+vim.opt.timeout = false -- No timeout for mappings
 
 -- Display settings.
 vim.opt.background = 'dark' -- Set to dark mode.
@@ -48,7 +49,11 @@ vim.api.nvim_create_autocmd('BufReadPost', {
   group    = 'settings',
   pattern  = '*',
   callback = function()
-    if fn.line("'\"") > 0 and fn.line("'\"") <= fn.line("$") then
+    if (
+      fn.expand('%:t') ~= 'COMMIT_EDITMSG' and
+      fn.line("'\"") > 0 and
+      fn.line("'\"") <= fn.line("$")
+    )then
       fn.setpos('.', fn.getpos("'\""))
       vim.api.nvim_feedkeys('zz', 'n', true)
     end
