@@ -33,6 +33,12 @@ vim.keymap.set('n', '<leader>tk', '<cmd>tabprev<cr>')
 vim.keymap.set('n', '<leader>tc', '<cmd>tabclose<cr>')
 vim.keymap.set('n', '<leader>tn', '<cmd>tabnew<cr>')
 
+-- Quickfix list
+vim.keymap.set('n', '<leader>ej', '<cmd>cnext<cr>')
+vim.keymap.set('n', '<leader>ek', '<cmd>cprev<cr>')
+vim.keymap.set('n', '<leader>el', '<cmd>clist<cr>')
+vim.keymap.set('n', '<leader>eo', '<cmd>copen<cr>')
+
 -- Telescope
 local builtin = require('telescope.builtin')
 local custom = require('plugin.telescope')
@@ -46,6 +52,7 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers)
 vim.keymap.set('n', '<leader>ft', builtin.builtin)
 vim.keymap.set('n', '<leader>fd', custom.switch_directory)
 vim.keymap.set('n', '<leader>fi', custom.search_config)
+vim.keymap.set('n', '<leader>fr', builtin.resume)
 
 -- Nerdtree
 vim.keymap.set('n', '<leader>n', '<cmd>NvimTreeToggle<cr>')
