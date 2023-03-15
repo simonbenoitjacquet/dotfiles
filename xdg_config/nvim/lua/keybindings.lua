@@ -54,6 +54,9 @@ vim.keymap.set('n', '<leader>fd', custom.switch_directory)
 vim.keymap.set('n', '<leader>fi', custom.search_config)
 vim.keymap.set('n', '<leader>fr', builtin.resume)
 
+vim.keymap.set('n', '<leader>fF', custom.Find_files)
+vim.keymap.set('n', '<leader>fL', custom.Live_grep)
+
 -- Nerdtree
 vim.keymap.set('n', '<leader>n', '<cmd>NvimTreeToggle<cr>')
 vim.keymap.set('n', '<leader>i', ':NvimTreeOpen ~/.config/nvim<cr>') -- Go to init file

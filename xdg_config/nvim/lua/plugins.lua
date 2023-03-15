@@ -95,12 +95,17 @@ packer.startup(function(use)
   -- Telescope for better searching and whatnot.
   use {
     'nvim-telescope/telescope.nvim',
-    config = "require('plugin.telescope')",
+    config = {
+      "require('plugin.telescope')",
+      "telescope.load_extension('fzf')",
+      "telescope.load_extension('live_grep_args')",
+    },
     requires = {
       {'nvim-lua/plenary.nvim'},
       {'nvim-treesitter/nvim-treesitter'},
       {'kyazdani42/nvim-web-devicons'},
       {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
+      {'nvim-telescope/telescope-live-grep-args.nvim'},
     },
   }
 
