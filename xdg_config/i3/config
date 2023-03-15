@@ -42,7 +42,7 @@ for_window [class="firefox" title="Library"] floating enable
 
 
 # At i3 start, launch a firefox instance in scratchpad
-exec --no-startup-id i3-msg 'exec firefox; floating enable; resize set 1632 918; move position center; move scratchpad'
+exec --no-startup-id i3-msg 'exec firefox; floating enable; resize set 1920 1060; move position center; move scratchpad'
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier Control
@@ -92,11 +92,11 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # Make window fullscreen
-bindsym $mod+f        fullscreen toggle 
+bindsym $mod+f        fullscreen toggle
 # Show hidden windows
-bindsym $mod+g        scratchpad show   
+bindsym $mod+g        scratchpad show
 # Hide window
-bindsym $mod+o        move scratchpad   
+bindsym $mod+o        move scratchpad
 
 # Vim marks
 # Make mark: read 1 character and mark the current window with this character
@@ -164,11 +164,12 @@ bindsym $mod+Shift+c  reload
 bindsym $mod+Shift+r  restart
 
 # resize window (you can also use the mouse for that)
-set $resize "<b>resize:</b> [h]igher, [l]ower, [w]ider, [t]hinner, [s]mall, [m]edium, [b]ig" 
+set $resize "<b>resize:</b> [h]igher, [l]ower, [w]ider, [t]hinner, [s]mall, [m]edium, [b]ig, [f]ull" 
 mode --pango_markup $resize {
     bindsym s         floating enable; resize set 672  378; move position center; mode "default"
     bindsym m         floating enable; resize set 1152 648; move position center; mode "default"
     bindsym b         floating enable; resize set 1632 918; move position center; mode "default"
+    bindsym f         floating enable; resize set 1920 1060; move position center; mode "default"
 
     bindsym h         resize grow height 10 px
     bindsym l         resize shrink height 10 px
