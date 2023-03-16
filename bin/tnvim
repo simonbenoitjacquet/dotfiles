@@ -1,0 +1,44 @@
+#!/usr/bin/zsh
+
+# If a session already exists, reattach to it
+if tmux has-session -t nvim; then
+  tmux attach-session -t nvim
+  exit 0
+fi
+
+# Start new tmux-session at this location
+tmux new-session -c $HOME/.config/nvim/ -s nvim \
+    -n 'root' \; \
+  send-keys 'vi' C-m \; \
+  \
+  new-window \
+    -c '#{session_path}/lua' \
+    -n 'keybindings' \; \
+  send-keys 'vi keybindings.lua' C-m \; \
+  \
+  new-window \
+    -c '#{session_path}/lua' \
+    -n 'plugins' \; \
+  send-keys 'vi plugins.lua' C-m \; \
+  \
+  new-window \
+    -c '#{session_path}/lua' \
+    -n 'settings' \; \
+  send-keys 'vi settings.lua' C-m \; \
+  \
+  new-window \
+    -c '#{session_path}/lua/plugin' \
+    -n 'telescope' \; \
+  send-keys 'vi telescope.lua' C-m \; \
+  \
+  new-window \
+    -c '#{session_path}/lua/plugin' \
+    -n 'lsp' \; \
+  send-keys 'vi lsp.lua' C-m \; \
+  \
+  new-window \
+    -c '#{session_path}/lua/plugin/snippets' \
+    -n 'snippets' \; \
+  send-keys 'vi' C-m \; \
+  \
+  select-window -t 1 \; \

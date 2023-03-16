@@ -77,7 +77,7 @@ bindsym $mod+Left     focus left
 bindsym $mod+Down     focus down
 bindsym $mod+Up       focus up
 bindsym $mod+Right    focus right
-bindsym $mod+t        [con_mark=_last] focus
+bindsym $mod+u        [con_mark=_last] focus
 
 # move focused window
 bindsym $mod+Shift+h  move left
@@ -246,6 +246,18 @@ mode --pango_markup $browser {
     bindsym Return    mode "default"
 }
 bindsym $mod+b mode $browser
+
+# Launch a new terminal that starts up with some command
+set $terminal "<b>terminal:</b> [t]mux, [c]ommand, [n]vim, [N]vim"
+mode --pango_markup $terminal {
+    bindsym t         exec i3-input -F 'exec $HOME/.dotfiles/scripts/ltwc.sh tmux attach-session -t "%s"' -P 'Tmux session: ', mode "default"
+    bindsym c         exec i3-input -F 'exec $HOME/.dotfiles/scripts/ltwc.sh "%s"' -P 'Command: ', mode "default"
+    bindsym n         exec $HOME/.dotfiles/scripts/ltwc.sh nvim, mode "default"
+    bindsym Shift+n   exec $HOME/.dotfiles/scripts/ltwc.sh tnvim, mode "default"
+    bindsym Escape    mode "default"
+}
+bindsym $mod+t mode $terminal
+
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
