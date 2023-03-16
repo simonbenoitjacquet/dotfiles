@@ -230,3 +230,7 @@ unset __conda_setup
 if _has conda; then
     conda activate ml
 fi
+
+function ctrlz() { fg; zle redisplay }
+zle -N ctrlz
+bindkey '^z' ctrlz
