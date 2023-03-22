@@ -97,8 +97,6 @@ packer.startup(function(use)
     'nvim-telescope/telescope.nvim',
     config = {
       "require('plugin.telescope')",
-      "telescope.load_extension('fzf')",
-      "telescope.load_extension('live_grep_args')",
     },
     requires = {
       {'nvim-lua/plenary.nvim'},
