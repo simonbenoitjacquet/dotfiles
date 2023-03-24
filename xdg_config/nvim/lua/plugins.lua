@@ -138,6 +138,9 @@ packer.startup(function(use)
     -- Highlights first unique character of each word 
     use 'unblevable/quick-scope'
 
+    -- Markdown preview in neovim
+    use {"ellisonleao/glow.nvim", config = function() require("glow").setup() end}
+
   -- Automatically sync all packages if we're bootstrapping.
   if bootstrap then
     packer.sync()
